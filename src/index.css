@@ -17,3 +17,13 @@ h1,
 h2 {
   font-family: 'Fredericka the Great', cursive;
 }
+
+.arrow-home {
+  transition: all ease-in-out 350ms;
+}
+.arrow-home:hover {
+  transform: translateY(-3px);
+}
+.arrow-home:active {
+  transform: translateY(2px);
+}

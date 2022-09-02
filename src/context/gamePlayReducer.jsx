@@ -1,27 +1,43 @@
 export const initialState = {
   isPlaying: false,
-  triedLetters: [],
-  WrongGuessNbr: 6,
+  word: undefined,
+  wordArray: undefined,
+  wrongLetters: [],
+  wrongGuessNbr: 6,
   playerWins: false
 }
 
 const gamePlayReducer = (state, action) => {
   const { type, payload } = action
   switch (type) {
-    case 'TOOGLE_PLAYING':
+    case 'TOGGLE_PLAYING':
       return {
         ...state,
         isPlaying: !state.isPlaying
       }
+    case 'FETCH_WORD':
+      return {
+        ...state
+      }
+    case 'SET_WORD':
+      return {
+        ...state,
+        word: payload,
+        wordArray: [...payload]
+      }
     case 'SUBSTRACT_GUESS_NBR':
       return {
         ...state,
-        WrongGuessNbr: state.WrongGuessNbr - 1
+        wrongGuessNbr: state.wrongGuessNbr - 1
       }
-    case 'SET_TRIED_LETTERS':
+    case 'SET_WRONG_LETTERS':
       return {
         ...state,
-        triedLetters: [...state.triedLetters, payload]
+        wrongLetters: [...state.wrongLetters, payload]
+      }
+    case 'COMPARE_LETTERS':
+      return {
+        ...state
       }
     default:
       return state
