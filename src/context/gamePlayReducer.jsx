@@ -1,7 +1,7 @@
 export const initialState = {
   isPlaying: false,
-  guessNbr: 6,
-  tryiedLetters: [],
+  triedLetters: [],
+  WrongGuessNbr: 6,
   playerWins: false
 }
 
@@ -12,6 +12,16 @@ const gamePlayReducer = (state, action) => {
       return {
         ...state,
         isPlaying: !state.isPlaying
+      }
+    case 'SUBSTRACT_GUESS_NBR':
+      return {
+        ...state,
+        WrongGuessNbr: state.WrongGuessNbr - 1
+      }
+    case 'SET_TRIED_LETTERS':
+      return {
+        ...state,
+        triedLetters: [...state.triedLetters, payload]
       }
     default:
       return state

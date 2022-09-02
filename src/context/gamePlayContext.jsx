@@ -12,12 +12,30 @@ export const GamePlayProvider = ({ children }) => {
     })
   }
 
+  function setTriedLetters(letter) {
+    dispatch({
+      type: 'SET_TRIED_LETTERS',
+      payload: letter
+    })
+  }
+
+  function substractGuessNbr() {
+    if (state.WrongGuessNbr === 0) {
+      return
+    }
+    dispatch({
+      type: 'SUBSTRACT_GUESS_NBR'
+    })
+  }
+
   const value = {
     isPlaying: state.isPlaying,
-    guessNbr: state.guessNbr,
-    tryiedLetters: state.tryiedLetters,
+    triedLetters: state.triedLetters,
+    WrongGuessNbr: state.WrongGuessNbr,
     playerWins: state.playerWins,
-    toggleIsPlaying
+    toggleIsPlaying,
+    setTriedLetters,
+    substractGuessNbr
   }
 
   return <GamePlayContext.Provider value={value}>{children}</GamePlayContext.Provider>
