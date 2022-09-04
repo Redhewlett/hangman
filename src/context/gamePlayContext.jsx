@@ -14,8 +14,21 @@ export const GamePlayProvider = ({ children }) => {
   }
 
   function setWrongLetters(letter) {
+    if (state.wrongLetters.includes(letter)) {
+      return
+    }
     dispatch({
       type: 'SET_WRONG_LETTERS',
+      payload: letter
+    })
+  }
+
+  function setGoodAnswers(letter) {
+    if (state.goodAnswers.includes(letter)) {
+      return
+    }
+    dispatch({
+      type: 'SET_GOOD_ANSWERS',
       payload: letter
     })
   }
@@ -58,6 +71,8 @@ export const GamePlayProvider = ({ children }) => {
 
     if (array.includes(letter)) {
       // 'got one letter'
+      setGoodAnswers(letter)
+      // checkPlayerWin()
       return
     } else {
       // 'the word does not include this letter'
@@ -69,17 +84,35 @@ export const GamePlayProvider = ({ children }) => {
     })
   }
 
+  function checkPlayerWin() {
+    let arr1 = state.goodAnswers.sort()
+    let arr2 = [...new Set(state.wordArray.slice(1, state.wordArray.length))].sort()
+    if (arr1.length !== arr2.length) return false
+    let result
+
+    for (var i = 0; i < arr2.length; ++i) {
+      if (arr1[i] !== arr2[i]) return
+      result = true
+    }
+    dispatch({
+      type: 'CHECK_PLAYER_WIN',
+      payload: result
+    })
+  }
+
   const value = {
     isPlaying: state.isPlaying,
     word: state.word,
     wordArray: state.wordArray,
+    goodAnswers: state.goodAnswers,
     wrongLetters: state.wrongLetters,
     wrongGuessNbr: state.wrongGuessNbr,
     playerWins: state.playerWins,
     toggleIsPlaying,
     fetchWord,
     compareLetters,
-    substractGuessNbr
+    substractGuessNbr,
+    checkPlayerWin
   }
 
   return <GamePlayContext.Provider value={value}>{children}</GamePlayContext.Provider>

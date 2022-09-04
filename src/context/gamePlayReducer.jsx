@@ -2,9 +2,11 @@ export const initialState = {
   isPlaying: false,
   word: undefined,
   wordArray: undefined,
+  goodAnswers: [],
   wrongLetters: [],
   wrongGuessNbr: 6,
-  playerWins: false
+  playerWins: false,
+  gameOver: false
 }
 
 const gamePlayReducer = (state, action) => {
@@ -13,7 +15,11 @@ const gamePlayReducer = (state, action) => {
     case 'TOGGLE_PLAYING':
       return {
         ...state,
-        isPlaying: !state.isPlaying
+        isPlaying: !state.isPlaying,
+        goodAnswers: [],
+        wrongLetters: [],
+        wrongGuessNbr: 6,
+        playerWins: false
       }
     case 'FETCH_WORD':
       return {
@@ -30,6 +36,11 @@ const gamePlayReducer = (state, action) => {
         ...state,
         wrongGuessNbr: state.wrongGuessNbr - 1
       }
+    case 'SET_GOOD_ANSWERS':
+      return {
+        ...state,
+        goodAnswers: [...state.goodAnswers, payload]
+      }
     case 'SET_WRONG_LETTERS':
       return {
         ...state,
@@ -38,6 +49,11 @@ const gamePlayReducer = (state, action) => {
     case 'COMPARE_LETTERS':
       return {
         ...state
+      }
+    case 'CHECK_PLAYER_WIN':
+      return {
+        ...state,
+        playerWins: payload
       }
     default:
       return state

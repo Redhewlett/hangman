@@ -38,7 +38,7 @@ function App() {
             <p className='  text-xl  p-2'>
               Guess the word before the character is hunged.
               <br />
-              Guess the word giving 1 letter, each wrong guess means on part of the character gets revealed.
+              Guess the word giving 1 letter, each wrong guess means one part of the character gets revealed.
               <br />
               If the character is hunged you lost, if you guessed before it is hunged won ! 🤩
             </p>
