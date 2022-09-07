@@ -21,15 +21,20 @@ function App() {
 
   return (
     <div className='flex flex-col justify-center items-center'>
-      <header className='p-4'>
+      <header className='p-4 flex flex-row'>
+        {isPlaying ? (
+          <>
+            <FontAwesomeIcon icon={faArrowLeft} size='3x' onClick={reStart} className='arrow-home' />
+          </>
+        ) : (
+          ''
+        )}
         <h1 className='capitalize text-5xl'>hangman game😵</h1>
       </header>
 
       {isPlaying ? (
         <>
           <Game />
-          <FontAwesomeIcon icon={faArrowLeft} size='3x' onClick={reStart} className='arrow-home' />
-          <p>Home Page</p>
         </>
       ) : (
         <>

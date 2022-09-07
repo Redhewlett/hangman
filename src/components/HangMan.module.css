@@ -1,0 +1,162 @@
+.container,
+.hangman {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hangman {
+  width: 400px;
+  aspect-ratio: 1;
+}
+
+.body,
+.arm1,
+.arm2,
+.leg1,
+.leg2,
+.head {
+  z-index: 0;
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.head {
+  width: 80px;
+  aspect-ratio: 1;
+  border-radius: 50px;
+  transform: rotate(-50deg);
+  background-color: transparent;
+  border: 10px solid white;
+  z-index: 1;
+  top: 50px;
+  left: 23%;
+  animation: appear 250ms 1;
+}
+
+.body {
+  width: 10px;
+  height: 130px;
+  left: 38%;
+  top: 28%;
+  animation: appear 250ms 1;
+  transform-origin: top;
+}
+.arm1,
+.arm2,
+.leg1,
+.leg2 {
+  width: 10px;
+  height: 120px;
+}
+.arm1 {
+  top: 30%;
+  left: 37%;
+  transform: rotate(10deg);
+  transform-origin: top right;
+  animation: grow-left 250ms 1;
+}
+.arm2 {
+  transform: rotate(-10deg);
+  top: 28%;
+  right: 59%;
+  animation: grow-right 250ms 1;
+  transform-origin: top right;
+}
+
+.leg1 {
+  top: 55%;
+  left: 37%;
+  transform: rotate(10deg);
+  animation: grow-left 250ms 1;
+  transform-origin: top right;
+}
+.leg2 {
+  transform: rotate(-10deg);
+  animation: grow-right 250ms 1;
+  transform-origin: top right;
+  top: 55%;
+  right: 59%;
+}
+
+.scafhold {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.scafhold > span {
+  background-color: white;
+  position: absolute;
+}
+
+.scafhold > span:nth-of-type(1) {
+  width: 300px;
+  height: 10px;
+  bottom: 10px;
+  right: 10px;
+}
+
+.scafhold > span:nth-of-type(2) {
+  width: 10px;
+  height: 350px;
+  bottom: 10px;
+  right: 10px;
+}
+
+.scafhold > span:nth-of-type(3) {
+  width: 230px;
+  height: 10px;
+  top: 30px;
+  right: 10px;
+}
+
+.scafhold > span:nth-of-type(4) {
+  width: 10px;
+  height: 38px;
+  top: 40px;
+  right: 230px;
+}
+
+.scafhold > span:nth-of-type(5) {
+  width: 10px;
+  height: 60px;
+  top: 30px;
+  right: 30px;
+  transform: rotate(-40deg);
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes grow-left {
+  from {
+    opacity: 0;
+    transform: rotate(10deg) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(10deg) scale(1);
+  }
+}
+
+@keyframes grow-right {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-10deg) scale(1);
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import useGamePlay from '../context/gamePlayContext'
+import HangMan from './HangMan'
 
 //components
 import Input from './Input'
@@ -14,7 +15,7 @@ export default function Game() {
   }, [goodAnswers])
 
   return (
-    <div className='flex flex-col justify-center items-center gap-10 m-4'>
+    <div className='flex flex-col justify-center items-center gap-0 m-4'>
       <div className='flex gap-4 text-4xl uppercase m-4'>
         <p className='p-2 border-2 rounded bg-red-400'>{wordArray[0]}</p>
         {slicedArray.map((letter, index) =>
@@ -28,7 +29,11 @@ export default function Game() {
         )}
       </div>
       <p className='text-3xl text-white'>{wrongLetters}</p>
-      {playerWins ? 'YOU WON!' : <Input />}
+
+      <div className='flex flex-col justify-center items-center'>
+        <HangMan />
+        {playerWins ? 'YOU WON!' : <Input />}
+      </div>
     </div>
   )
 }
