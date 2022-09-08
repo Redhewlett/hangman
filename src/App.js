@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className='flex flex-col justify-center items-center'>
-      <header className='p-4 flex flex-row'>
+      <header className='p-4 flex flex-row gap-4'>
         {isPlaying ? (
           <>
             <FontAwesomeIcon icon={faArrowLeft} size='3x' onClick={reStart} className='arrow-home' />
@@ -49,7 +49,10 @@ function App() {
             </p>
           </section>
 
-          <button className=' border-2 rounded w-40 h-10 uppercase' onClick={start}>
+          <button
+            className='temp--bounce border-2 rounded w-40 h-10 m-5 uppercase hover:bg-red-400 animate-bounce transition-all duration-300 ease-in-out'
+            onClick={start}
+          >
             Play
           </button>
         </>

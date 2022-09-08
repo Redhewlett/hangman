@@ -100,6 +100,17 @@ export const GamePlayProvider = ({ children }) => {
     })
   }
 
+  function setGameOver() {
+    let gameState = false
+    if (state.wrongLetters.length === 6 || state.playerWins) {
+      gameState = true
+    }
+    dispatch({
+      type: 'SET_GAME_OVER',
+      payload: gameState
+    })
+  }
+
   const value = {
     isPlaying: state.isPlaying,
     word: state.word,
@@ -108,11 +119,13 @@ export const GamePlayProvider = ({ children }) => {
     wrongLetters: state.wrongLetters,
     wrongGuessNbr: state.wrongGuessNbr,
     playerWins: state.playerWins,
+    gameOver: state.gameOver,
     toggleIsPlaying,
     fetchWord,
     compareLetters,
     substractGuessNbr,
-    checkPlayerWin
+    checkPlayerWin,
+    setGameOver
   }
 
   return <GamePlayContext.Provider value={value}>{children}</GamePlayContext.Provider>

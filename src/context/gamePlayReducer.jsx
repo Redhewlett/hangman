@@ -19,7 +19,8 @@ const gamePlayReducer = (state, action) => {
         goodAnswers: [],
         wrongLetters: [],
         wrongGuessNbr: 6,
-        playerWins: false
+        playerWins: false,
+        gameOver: false
       }
     case 'FETCH_WORD':
       return {
@@ -54,6 +55,11 @@ const gamePlayReducer = (state, action) => {
       return {
         ...state,
         playerWins: payload
+      }
+    case 'SET_GAME_OVER':
+      return {
+        ...state,
+        gameOver: payload
       }
     default:
       return state

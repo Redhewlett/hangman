@@ -27,3 +27,8 @@ h2 {
 .arrow-home:active {
   transform: translateY(2px);
 }
+
+.temp--bounce {
+  -webkit-animation-iteration-count: 5;
+  animation-iteration-count: 5;
+}
