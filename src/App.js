@@ -57,7 +57,7 @@ function App() {
               If the character is hunged you lost, if you guessed before it is hunged won ! 🤩
             </p>
           </section>
-          <div className='flex'>
+          <div className='lg:flex'>
             <SelectLevel />
             <button
               className='temp--bounce border-2 rounded w-40 h-10 m-5 uppercase hover:bg-red-400 animate-bounce transition-all duration-300 ease-in-out'
