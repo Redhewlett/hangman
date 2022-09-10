@@ -10,7 +10,6 @@ export default function Game() {
   const { wrongLetters, word, wordArray, goodAnswers, playerWins, checkPlayerWin, gameOver, setGameOver } = useGamePlay()
   const slicedArray = wordArray.slice(1, wordArray.length)
   const [modalOpen, setModalOpen] = useState(false)
-  console.log(wordArray)
 
   useEffect(() => {
     checkPlayerWin()
