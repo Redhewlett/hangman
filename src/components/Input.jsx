@@ -16,7 +16,9 @@ export default function Input() {
     setValue('')
   }
   function handleInput(e) {
-    setValue(e.target.value)
+    const letter = e.target.value.toLowerCase()
+    setValue(letter)
+    console.log(letter)
   }
   function handleKeyDown(e) {
     const inputValue = e.target.value
