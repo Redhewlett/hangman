@@ -48,13 +48,19 @@ function App() {
               If the character is hunged you lost, if you guessed before it is hunged won ! 🤩
             </p>
           </section>
-
           <button
             className='temp--bounce border-2 rounded w-40 h-10 m-5 uppercase hover:bg-red-400 animate-bounce transition-all duration-300 ease-in-out'
             onClick={start}
           >
             Play
           </button>
+          <a target='_blank' rel='noreferrer' href='https://icons8.com/icon/95Gqq3BDW1nF/hangman'>
+            Hangman
+          </a>
+          icon by
+          <a target='_blank' rel='noreferrer' href='https://icons8.com'>
+            Icons8
+          </a>
         </>
       )}
     </div>
