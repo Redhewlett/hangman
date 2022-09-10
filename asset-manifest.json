@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/hangman/static/css/main.6753e318.css",
-    "main.js": "/hangman/static/js/main.3255b8ae.js",
+    "main.js": "/hangman/static/js/main.297ec8a2.js",
     "index.html": "/hangman/index.html",
     "main.6753e318.css.map": "/hangman/static/css/main.6753e318.css.map",
-    "main.3255b8ae.js.map": "/hangman/static/js/main.3255b8ae.js.map"
+    "main.297ec8a2.js.map": "/hangman/static/js/main.297ec8a2.js.map"
   },
   "entrypoints": [
     "static/css/main.6753e318.css",
-    "static/js/main.3255b8ae.js"
+    "static/js/main.297ec8a2.js"
   ]
 }
