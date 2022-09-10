@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className='flex flex-col justify-center items-center'>
-      <header className='p-4 flex flex-row gap-4'>
+      <header className='p-4 flex flex-row gap-2 lg:gap-4'>
         {isPlaying ? (
           <>
             <FontAwesomeIcon icon={faArrowLeft} size='3x' onClick={reStart} className='arrow-home' />
@@ -29,7 +29,7 @@ function App() {
         ) : (
           ''
         )}
-        <h1 className='capitalize text-5xl'>hangman game😵</h1>
+        <h1 className='title capitalize lg:text-5xl'>hangman game</h1>
       </header>
 
       {isPlaying ? (
@@ -38,9 +38,9 @@ function App() {
         </>
       ) : (
         <>
-          <section className='w-2/3 rounded-sm text-center '>
-            <h2 className='capitalize text-4xl '>rules</h2>
-            <p className='  text-xl  p-2'>
+          <section className='lg:w-2/3 rounded-sm text-center'>
+            <h2 className='capitalize lg:text-4xl '>rules</h2>
+            <p className='text-lg lg:text-xl  p-2'>
               Guess the word before the character is hunged.
               <br />
               Guess the word giving 1 letter, each wrong guess means one part of the character gets revealed.
