@@ -1,5 +1,6 @@
 export const initialState = {
   isPlaying: false,
+  difficulty: undefined,
   word: undefined,
   wordArray: undefined,
   goodAnswers: [],
@@ -21,6 +22,11 @@ const gamePlayReducer = (state, action) => {
         wrongGuessNbr: 6,
         playerWins: false,
         gameOver: false
+      }
+    case 'SET_DIFFICULTY':
+      return {
+        ...state,
+        difficulty: payload
       }
     case 'FETCH_WORD':
       return {

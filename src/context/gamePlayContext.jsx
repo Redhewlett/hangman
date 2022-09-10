@@ -13,6 +13,14 @@ export const GamePlayProvider = ({ children }) => {
     })
   }
 
+  function setDifficulty(lvl) {
+    const difficulty = lvl
+    dispatch({
+      type: 'SET_DIFFICULTY',
+      payload: difficulty
+    })
+  }
+
   function setWrongLetters(letter) {
     if (state.wrongLetters.includes(letter)) {
       return
@@ -42,18 +50,39 @@ export const GamePlayProvider = ({ children }) => {
     })
   }
 
+  function translateDifficulty(difficulty) {
+    if (difficulty === 'noob') return Math.floor(Math.random() * (6 - 3)) + 3
+    if (difficulty === 'champ') return Math.floor(Math.random() * (11 - 5)) + 5
+    if (difficulty === 'smurf') return Math.floor(Math.random() * (16 - 10)) + 10
+  }
+
   function fetchWord() {
-    const options = {
-      method: 'GET',
-      url: 'https://random-word-api.herokuapp.com/word'
+    if (state.difficulty) {
+      const lvl = translateDifficulty(state.difficulty)
+      const options = {
+        method: 'GET',
+        url: `https://random-word-api.herokuapp.com/word?length=${lvl}`
+      }
+      Axios.request(options)
+        .then(function (response) {
+          setWord(response.data[0])
+        })
+        .catch(function (error) {
+          console.error(error)
+        })
+    } else {
+      const options = {
+        method: 'GET',
+        url: 'https://random-word-api.herokuapp.com/word'
+      }
+      Axios.request(options)
+        .then(function (response) {
+          setWord(response.data[0])
+        })
+        .catch(function (error) {
+          console.error(error)
+        })
     }
-    Axios.request(options)
-      .then(function (response) {
-        setWord(response.data[0])
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
     dispatch({
       type: 'FETCH_WORD'
     })
@@ -113,6 +142,7 @@ export const GamePlayProvider = ({ children }) => {
 
   const value = {
     isPlaying: state.isPlaying,
+    difficulty: state.difficulty,
     word: state.word,
     wordArray: state.wordArray,
     goodAnswers: state.goodAnswers,
@@ -121,6 +151,7 @@ export const GamePlayProvider = ({ children }) => {
     playerWins: state.playerWins,
     gameOver: state.gameOver,
     toggleIsPlaying,
+    setDifficulty,
     fetchWord,
     compareLetters,
     substractGuessNbr,
