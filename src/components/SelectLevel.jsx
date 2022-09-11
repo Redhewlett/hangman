@@ -16,7 +16,7 @@ export default function SelectLevel() {
         allowDeselect
         value={difficulty}
         onChange={selectDifficulty}
-        label='Your favorite framework/library'
+        label='Select your level'
         placeholder='Pick your lvl'
         data={[
           { value: 'noob', label: 'Noob - 3-5 letters' },
