@@ -57,32 +57,28 @@ export const GamePlayProvider = ({ children }) => {
   }
 
   function fetchWord() {
+    let options
     if (state.difficulty) {
       const lvl = translateDifficulty(state.difficulty)
-      const options = {
+      options = {
         method: 'GET',
         url: `https://random-word-api.herokuapp.com/word?length=${lvl}`
       }
-      Axios.request(options)
-        .then(function (response) {
-          setWord(response.data[0])
-        })
-        .catch(function (error) {
-          console.error(error)
-        })
     } else {
-      const options = {
+      //default difficulty
+      const lvl = translateDifficulty('champ')
+      options = {
         method: 'GET',
-        url: 'https://random-word-api.herokuapp.com/word'
+        url: `https://random-word-api.herokuapp.com/word?length=${lvl}`
       }
-      Axios.request(options)
-        .then(function (response) {
-          setWord(response.data[0])
-        })
-        .catch(function (error) {
-          console.error(error)
-        })
     }
+    Axios.request(options)
+      .then(function (response) {
+        setWord(response.data[0])
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
     dispatch({
       type: 'FETCH_WORD'
     })

@@ -10,13 +10,17 @@ function App() {
 
   function start() {
     if (difficulty) {
-      fetchWord()
-      setTimeout(() => {
-        toggleIsPlaying()
-      }, 500)
+      fetchNewWord()
     } else {
       toggleIsPlaying()
     }
+  }
+
+  function fetchNewWord() {
+    fetchWord()
+    setTimeout(() => {
+      toggleIsPlaying()
+    }, 200)
   }
 
   function reStart() {
@@ -30,7 +34,7 @@ function App() {
 
   return (
     <div className='flex flex-col justify-center items-center'>
-      <header className='p-4 flex flex-row gap-2 lg:gap-4'>
+      <header className='p-4 flex flex-row gap-2 lg:gap-4 justify-center'>
         {isPlaying ? (
           <>
             <FontAwesomeIcon icon={faArrowLeft} size='3x' onClick={reStart} className='arrow-home' />
