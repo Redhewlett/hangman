@@ -77,7 +77,11 @@ export const GamePlayProvider = ({ children }) => {
         setWord(response.data[0])
       })
       .catch(function (error) {
-        console.error(error)
+        if (error.name === 'AbortError') {
+          console.log('fetch aborted')
+        } else {
+          console.error(error)
+        }
       })
     dispatch({
       type: 'FETCH_WORD'

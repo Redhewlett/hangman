@@ -29,7 +29,10 @@ function App() {
   }
 
   useEffect(() => {
-    fetchWord()
+    const abort = new AbortController()
+    fetchWord({ signal: abort.signal })
+    //cleanup
+    return () => abort.abort
   }, [])
 
   return (
